@@ -16,7 +16,7 @@ starttime=$(date +%s)
 
 # Language defaults to "golang"
 LANGUAGE="golang"
-CC_SRC_PATH="https://github.com/IBM/SecuringArt-using-Blockchain-DigitalCertificates"
+CC_SRC_PATH="github.com/SecuringArt-using-Blockchain-DigitalCertificates"
 
 echo "POST request Enroll on Org1  ..."
 echo
