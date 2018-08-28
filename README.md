@@ -3,13 +3,13 @@
 
 # Securing Artwork using Blockchain Digital Certificates
 
-In this Code Pattern, This is a sample auction Node.js based application, that demonstrates storing base64 encoded and encrypted image on to Blockchain ledger and retrieve the same.This application launches Hyperledger Fabric network, aswell starts the application as REST API server built on top of NodeSDK APIs. 
+This code pattern is a sample auction Node.js based application that demonstrates storing base64 encoded and encrypted images on a Blockchain ledger and retrieving the same. This application launches Hyperledger Fabric network and then starts the application as a REST API server built on top of NodeSDK APIs.
 
 **Auction Blockchain Application Credits**: Mohan Venkataraman, Sandeep Pulluru and Ratnakar Asara
 
-**Disclaimer**: The image used in this sample demo have been downloaded from publicly available images on the internet, and the copyright belongs to the respective owners. The usage here is strictly for non-commercial purposes as sample data. We recommend that users create their own sample data as appropriate. All details used in the sample data are fictitous. The information provided in this README.md is subject to change. Also this is based out of fabric-sample balance-transafer example.
+**Disclaimer**: The image used in this sample demo has been downloaded from publicly available images on the internet, and the copyright belongs to the respective owners. The usage here is strictly for non-commercial purposes as sample data. We recommend that users create their own sample data as appropriate. All details used in the sample data are fictitous. The information provided in this README.md is subject to change. Also this is based out of fabric-sample balance-transafer example.
 
-When the reader has completed this Code Pattern, they will understand how to:
+When the reader has completed this code pattern, he or she will understand how to:
 
 * Set up a Blockchain network
 * Generate a base64 encrypted image and store it on the blockchain ledger
@@ -17,7 +17,9 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 
 <!--Remember to dump an image in this path-->
-![](doc/source/images/architecture.png)
+<p align="center">
+<img src="./readme-images/auction-diagram.png"/>
+</p>
 
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
@@ -26,16 +28,26 @@ When the reader has completed this Code Pattern, they will understand how to:
 3. Launch the Node.js application (Rest Server wrapper of top of the NodeSDK API)
 4. Create the channel myChannel
 5. Install and instantiate the auction chaincode
-6. Invoke a transaction where the Node.js app transforms a base 64 encrypted image to a string format 
-7. Chaincode calls a smart contract that stores the image on the Blockchain ledger
-5. Query chaincode to gether the image data by its imageID and save the image as a Thumbnail in a public folder
+6. Invoke a transaction where the Node.js app transforms a base 64 encrypted image into a string format
+7. Store the encrypted image image on the Blockchain ledger
+8. Query ledger to get the image data by its imageID and save the image as a Thumbnail in a public folder
 
 <!--Update this section-->
 ## Prerequisites
-* Docker - 17.09.x or higher
-* Docker Compose - 1.16.1 or higher
-* Node.js v8.4.0 or higher
-* [jq] (https://stedolan.github.io/jq/)
+* [Docker](https://www.docker.com/): 17.09.x or higher
+* [Docker Compose](https://docs.docker.com/compose/): 1.16.1 or higher
+* [jq](https://stedolan.github.io/jq/)
+* [Hyperledger Fabric SDK](https://fabric-sdk-node.github.io/): Enables backend to connect to IBM Blockchain service
+* [Node.js packages](https://docs.docker.com/compose/): If expecting to run this application locally, please continue by installing [Node.js](https://docs.docker.com/compose/) runtime and NPM. Currently the Hyperledger Fabric SDK only appears to work with node v8.9.0+, but [is not yet supported](https://github.com/hyperledger/fabric-sdk-node#build-and-test) on node v9.0+. If your system requires newer versions of node for other projects, we'd suggest using [nvm](https://github.com/creationix/nvm) to easily switch between node versions. We did so with the following commands
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+# Place next three lines in ~/.bash_profile
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install v8.9.0
+nvm use 8.9.0
+```
 
 <!--Update this section-->
 ## Included components
@@ -44,12 +56,11 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 <!--Update this section-->
 ## Featured technologies
-Select components from [here](https://github.ibm.com/developer-journeys/journey-docs/tree/master/_content/dev#technologies), copy and paste the raw text for ease
-* [jq] (https://stedolan.github.io/jq/): description
-* [Docker](link): 17.09.x or higher
-* [Docker Compose](link): 1.16.1 or higher
-* [Node.js](link): v8.4.0 or higher
-* [Technology](link): description
+* [Hyperledger Node.js SDK](https://github.com/hyperledger/fabric-sdk-node)
+* [jq](https://stedolan.github.io/jq/):  a lightweight and flexible command-line JSON processor
+* [Docker](https://www.docker.com/): 17.09.x or higher
+* [Docker Compose](https://docs.docker.com/compose/): 1.16.1 or higher
+* [Node.js](https://docs.docker.com/compose/): v8.9.0 or higher
 
 ## Steps
 1. [Clone the repo](#1-clone-the-repo)
@@ -70,8 +81,16 @@ git clone https://github.com/IBM/SecuringArt-using-Blockchain-DigitalCertificate
 In one terminal launch hyperledger fabric network and Node.js application (a REST Server wrapper on top of Fabric NodeSDK api)  with the following command
 ```
 cd SecuringArt-using-Blockchain-DigitalCertificates
-./bootstrap_app.sh 
+./bootstrap_app.sh
 ```
+The above script **bootstrap_app.sh** performs the following actions:
+* remove any old *docker* images
+* *Downloads* fabric images
+* restarts the *Fabric network*
+* *Installs* required node modules
+* *Starts* the node application on Port 4000
+
+
 
 ### Step 3. Create the Network Channel and Invoke a Transaction
 In another terminal issue the following command from auction directory.
@@ -79,13 +98,13 @@ In another terminal issue the following command from auction directory.
 ./quicktest.sh
 ```
 The above script **quicktest.sh** performs the following actions:
-* creates a *channel* named **mychannel** & and all the peers on the network *join*s the channel 
+* creates a *channel* named **mychannel** & and all the peers on the network *join*s the channel
 * *Installs* & *Instantiates* auction chaincode
 * send an *Invoke transaction*. where Node.js app generates base64 encrypted image in to a string format and sends it to chaincode, then *auction chiancode* stores the image on the Blockchain ledger of the channel *mychannel*.
 * Query chaincode to get the Image data using the imageID, the image will be saved as Thumbnail and saved in public/images folder.
 
 For all the image processing & conversion refer the Node.js code [here](https://github.com/ChainyardLabs/auction/blob/master/app/saveImageTx.js)
-Storing image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168) 
+Storing image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168)
 
 Please check youtube video available here : https://goo.gl/jH1uCQ
 
