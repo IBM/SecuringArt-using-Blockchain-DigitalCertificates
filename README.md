@@ -3,7 +3,7 @@
 
 # Securing Artwork using Blockchain Digital Certificates
 
-This code pattern is a sample auction Node.js based application that demonstrates storing base64 encoded and encrypted images on a Blockchain ledger and retrieving the same. This application launches Hyperledger Fabric network and then starts the application as a REST API server built on top of NodeSDK APIs. 
+This code pattern is a sample auction Node.js based application that demonstrates storing base64 encoded and encrypted images on a Blockchain ledger and retrieving the same. This application launches Hyperledger Fabric network and then starts the application as a REST API server built on top of NodeSDK APIs.
 
 **Auction Blockchain Application Credits**: Mohan Venkataraman, Sandeep Pulluru and Ratnakar Asara
 
@@ -17,7 +17,9 @@ When the reader has completed this code pattern, he or she will understand how t
 
 
 <!--Remember to dump an image in this path-->
-![](readme-images/auction-diagram.png)
+<p align="center">
+<img src="./readme-images/auction-diagram.png"/>
+</p>
 
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
@@ -54,7 +56,7 @@ nvm use 8.9.0
 
 <!--Update this section-->
 ## Featured technologies
-* [Hyperledger Node.js SDK](https://github.com/hyperledger/fabric-sdk-node) 
+* [Hyperledger Node.js SDK](https://github.com/hyperledger/fabric-sdk-node)
 * [jq](https://stedolan.github.io/jq/):  a lightweight and flexible command-line JSON processor
 * [Docker](https://www.docker.com/): 17.09.x or higher
 * [Docker Compose](https://docs.docker.com/compose/): 1.16.1 or higher
@@ -79,12 +81,12 @@ git clone https://github.com/IBM/SecuringArt-using-Blockchain-DigitalCertificate
 In one terminal launch hyperledger fabric network and Node.js application (a REST Server wrapper on top of Fabric NodeSDK api)  with the following command
 ```
 cd SecuringArt-using-Blockchain-DigitalCertificates
-./bootstrap_app.sh 
+./bootstrap_app.sh
 ```
 The above script **bootstrap_app.sh** performs the following actions:
 * remove any old *docker* images
 * *Downloads* fabric images
-* restarts the *Fabric network* 
+* restarts the *Fabric network*
 * *Installs* required node modules
 * *Starts* the node application on Port 4000
 
@@ -96,13 +98,13 @@ In another terminal issue the following command from auction directory.
 ./quicktest.sh
 ```
 The above script **quicktest.sh** performs the following actions:
-* creates a *channel* named **mychannel** & and all the peers on the network *join*s the channel 
+* creates a *channel* named **mychannel** & and all the peers on the network *join*s the channel
 * *Installs* & *Instantiates* auction chaincode
 * send an *Invoke transaction*. where Node.js app generates base64 encrypted image in to a string format and sends it to chaincode, then *auction chiancode* stores the image on the Blockchain ledger of the channel *mychannel*.
 * Query chaincode to get the Image data using the imageID, the image will be saved as Thumbnail and saved in public/images folder.
 
 For all the image processing & conversion refer the Node.js code [here](https://github.com/ChainyardLabs/auction/blob/master/app/saveImageTx.js)
-Storing image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168) 
+Storing image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168)
 
 Please check youtube video available here : https://goo.gl/jH1uCQ
 
