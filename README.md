@@ -103,10 +103,17 @@ The above script **quicktest.sh** performs the following actions:
 * send an *Invoke transaction*. where Node.js app generates base64 encrypted image in to a string format and sends it to chaincode, then *auction chiancode* stores the image on the Blockchain ledger of the channel *mychannel*.
 * Query chaincode to get the Image data using the imageID, the image will be saved as Thumbnail and saved in public/images folder.
 
-For all the image processing & conversion refer the Node.js code [here](https://github.com/ChainyardLabs/auction/blob/master/app/saveImageTx.js)
-Storing image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168)
+You should see similar results from running `quicktest.sh`:
+<p align="center">
+<img src="./readme-images/image-output.png"/>
+</p>
 
-Please check youtube video available here : https://goo.gl/jH1uCQ
+
+* For all the image processing & conversion refer to the Node.js code [here](https://github.com/ChainyardLabs/auction/blob/master/app/saveImageTx.js)
+
+* Storing an image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168)
+
+* Please check youtube video available here : https://goo.gl/jH1uCQ
 
 
 # Links
