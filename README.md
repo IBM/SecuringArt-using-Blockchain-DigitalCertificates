@@ -7,7 +7,7 @@ This code pattern is a sample auction Node.js based application that demonstrate
 
 **Auction Blockchain Application Credits**: Mohan Venkataraman, Sandeep Pulluru and Ratnakar Asara
 
-**Disclaimer**: The image used in this sample demo has been downloaded from publicly available images on the internet, and the copyright belongs to the respective owners. The usage here is strictly for non-commercial purposes as sample data. We recommend that users create their own sample data as appropriate. All details used in the sample data are fictitous. The information provided in this README.md is subject to change. Also this is based out of fabric-sample balance-transafer example.
+**Disclaimer**: The image used in this sample demo has been downloaded from publicly available images on the internet, and the copyright belongs to the respective owners. The usage here is strictly for non-commercial purposes as sample data. We recommend that users create their own sample data as appropriate. All details used in the sample data are fictitious. The information provided in this `README.md` is subject to change. Also this is based out of fabric-sample balance-transfer example.
 
 When the reader has completed this code pattern, he or she will understand how to:
 
@@ -57,7 +57,7 @@ nvm use 8.9.0
 <!--Update this section-->
 ## Featured technologies
 * [Hyperledger Node.js SDK](https://github.com/hyperledger/fabric-sdk-node)
-* [jq](https://stedolan.github.io/jq/):  a lightweight and flexible command-line JSON processor
+* [jq](https://stedolan.github.io/jq/): a lightweight and flexible command-line JSON processor
 * [Docker](https://www.docker.com/): 17.09.x or higher
 * [Docker Compose](https://docs.docker.com/compose/): 1.16.1 or higher
 * [Node.js](https://docs.docker.com/compose/): v8.9.0 or higher
@@ -78,7 +78,7 @@ git clone https://github.com/IBM/SecuringArt-using-Blockchain-DigitalCertificate
 
 ### Step 2. Launch Hyperledger Fabric Network and Node App
 
-In one terminal launch hyperledger fabric network and Node.js application (a REST Server wrapper on top of Fabric NodeSDK api)  with the following command
+In one terminal launch hyperledger fabric network and Node.js application (a REST Server wrapper on top of Fabric NodeSDK api) with the following command
 ```
 cd SecuringArt-using-Blockchain-DigitalCertificates
 ./bootstrap_app.sh
@@ -100,8 +100,8 @@ In another terminal issue the following command from auction directory.
 The above script **quicktest.sh** performs the following actions:
 * creates a *channel* named **mychannel** & and all the peers on the network *join*s the channel
 * *Installs* & *Instantiates* auction chaincode
-* send an *Invoke transaction*. where Node.js app generates base64 encrypted image in to a string format and sends it to chaincode, then *auction chiancode* stores the image on the Blockchain ledger of the channel *mychannel*.
-* Query chaincode to get the Image data using the imageID, the image will be saved as Thumbnail and saved in public/images folder.
+* send an *Invoke transaction*. where Node.js app generates base64 encrypted image in to a string format and sends it to chaincode, then *auction chaincode* stores the image on the Blockchain ledger of the channel *mychannel*.
+* Query chaincode to get the Image data using the imageID, the image will be saved as Thumbnail and saved in `public/images` folder.
 
 You should see similar results from running `quicktest.sh`:
 <p align="center">
@@ -113,7 +113,7 @@ You should see similar results from running `quicktest.sh`:
 
 * Storing an image using chaincode, refer the code snippet [here](https://github.com/ChainyardLabs/auction/blob/master/artifacts/src/github.com/auction/auction.go#L138-L168)
 
-* Please check youtube video available here : https://goo.gl/jH1uCQ
+* Please check youtube video available here: https://goo.gl/jH1uCQ
 
 
 # Links
