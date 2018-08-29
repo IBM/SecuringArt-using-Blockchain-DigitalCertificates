@@ -16,7 +16,7 @@ starttime=$(date +%s)
 
 # Language defaults to "golang"
 LANGUAGE="golang"
-CC_SRC_PATH="github.com/SecuringArt-using-Blockchain-DigitalCertificates"
+CC_SRC_PATH="github.com/auction"
 
 echo "POST request Enroll on Org1  ..."
 echo
@@ -125,6 +125,8 @@ curl -s -X POST \
 echo
 echo
 
+#    "itemImage":"data:image/jpeg;base64,$(base64 -w 0 images/Monalisa.jpg)",
+
 saveImageOnBlockchain() {
 	cat <<EOF
 {
@@ -137,7 +139,7 @@ saveImageOnBlockchain() {
     "itemSize":"15 x 15 in",
     "itemImageType":"image/jpeg",
     "itemBasePrice":"200000",
-    "itemImage":"data:image/jpeg;base64,$(base64 -w 0 images/Monalisa.jpg)",
+    "itemImage":"data:image/jpeg;base64,$(base64 -i images/Monalisa.jpg)",
     "peers": "peer0.org1.example.com",
     "fcn" : "saveImage"
 }
