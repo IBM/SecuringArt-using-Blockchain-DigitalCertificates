@@ -90,7 +90,7 @@ The above script **bootstrap_app.sh** performs the following actions:
 * *Installs* required node modules
 * *Starts* the node application on Port 4000
 
-
+**NOTE:** You may be tempted to run `http://localhost:4000` at this point - please do not do that; otherwise you will get an `UnauthorizedError: No authorization token was found` error.  After running the `bootstrap_app.sh` command, immediately go to [Create the Network Channel and Invoke a Transaction](#3-Create-the-Network-Channel-and-Invoke-a-Transaction) and run the `quicketest.sh` command.
 
 ### Step 3. Create the Network Channel and Invoke a Transaction
 In another terminal issue the following command from auction directory.
