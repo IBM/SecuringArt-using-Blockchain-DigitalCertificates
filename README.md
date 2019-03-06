@@ -118,7 +118,6 @@ You should see similar results from running `quicktest.sh`:
 # Links
 
 * [IBM Blockchain - Marbles demo](https://github.com/IBM-Blockchain/marbles)
-* [Hyperledger Composer](https://hyperledger.github.io/composer/latest/index.html)
 
 
 # Learn more
